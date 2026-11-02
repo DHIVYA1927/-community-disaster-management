@@ -79,10 +79,12 @@ if (fs.existsSync(frontendDist)) {
 
 const PORT = process.env.PORT || 5000;
 
-const server = app.listen(PORT, () => {
-  console.log(`[Server] Community Disaster Management Server running on port ${PORT}`);
-  console.log(`[Server] Health check: http://localhost:${PORT}/api/health`);
-  console.log(`[Server] Frontend served at: http://localhost:${PORT}/ and http://localhost:5173/`);
-});
+if (!process.env.VERCEL) {
+  const server = app.listen(PORT, () => {
+    console.log(`[Server] Community Disaster Management Server running on port ${PORT}`);
+    console.log(`[Server] Health check: http://localhost:${PORT}/api/health`);
+    console.log(`[Server] Frontend served at: http://localhost:${PORT}/ and http://localhost:5173/`);
+  });
+}
 
 module.exports = app;
