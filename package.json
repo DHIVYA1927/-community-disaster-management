@@ -1,0 +1,27 @@
+{
+  "name": "community-disaster-management-system",
+  "version": "1.0.0",
+  "description": "Full-Stack MERN Community Disaster Management and Resource Allocation System",
+  "scripts": {
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "seed": "cd backend && node src/seed.js",
+    "start:backend": "cd backend && node src/server.js",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build"
+  },
+  "keywords": [
+    "mern",
+    "disaster-management",
+    "resource-allocation",
+    "mongodb",
+    "react",
+    "express",
+    "nodejs",
+    "leaflet"
+  ],
+  "author": "Disaster Management Engineering Team",
+  "license": "MIT"
+}
