@@ -1,5 +1,7 @@
 # Community Disaster Management and Resource Allocation System (CDM-RAS)
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/dhivyadsk308-svg/community-disaster-management-system)
+
 A complete, modern, responsive full-stack **MERN** application designed to serve as a centralized disaster management and emergency relief coordination platform. It seamlessly connects citizens, field volunteers, NGOs, and emergency administrators during natural disasters such as floods, earthquakes, cyclones, fires, and landslides.
 
 ---

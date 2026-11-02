@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Full-Stack MERN Community Disaster Management and Resource Allocation System",
   "scripts": {
+    "start": "npm run start:backend",
     "build": "npm run install:all && npm run build:frontend",
     "install:backend": "cd backend && npm install",
     "install:frontend": "cd frontend && npm install",
