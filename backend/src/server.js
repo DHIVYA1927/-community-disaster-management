@@ -62,20 +62,26 @@ app.use('/api/notifications', notificationRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/geocode', geocodeRoutes);
 
-// Error Handling Middleware for API
-app.use(errorHandler);
+// Serve static frontend build
+const frontendDist = path.resolve(__dirname, '../../frontend/dist');
+console.log(`[Server] Frontend build directory: ${frontendDist} (exists: ${fs.existsSync(frontendDist)})`);
 
-// Serve static frontend build if available
-const frontendDist = path.join(__dirname, '../../frontend/dist');
 if (fs.existsSync(frontendDist)) {
   app.use(express.static(frontendDist));
-  app.use((req, res, next) => {
-    if (req.method === 'GET' && !req.path.startsWith('/api') && !req.path.startsWith('/uploads')) {
-      return res.sendFile(path.join(frontendDist, 'index.html'));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
+      return next();
     }
-    next();
+    res.sendFile(path.resolve(frontendDist, 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.status(200).send('<h1>Community Disaster Management API is Live!</h1><p>Frontend build was not found. Health check: <a href="/api/health">/api/health</a></p>');
   });
 }
+
+// Error Handling Middleware for API
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
