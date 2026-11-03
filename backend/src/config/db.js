@@ -17,9 +17,7 @@ const connectDB = async () => {
     return conn;
   } catch (error) {
     console.error(`[MongoDB] Connection error: ${error.message}`);
-    if (!process.env.VERCEL) {
-      process.exit(1);
-    }
+    console.warn('[MongoDB] Server continuing to run so frontend and health check remain accessible.');
   }
 };
 
