@@ -2,6 +2,9 @@
   "name": "community-disaster-management-system",
   "version": "1.0.0",
   "description": "Full-Stack MERN Community Disaster Management and Resource Allocation System",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "start": "npm run start:backend",
     "build": "npm run install:all && npm run build:frontend",

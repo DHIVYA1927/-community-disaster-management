@@ -5,6 +5,7 @@ frontend/node_modules/
 
 # Local database files
 backend/data/db/
+data/
 *.lock
 *.wt
 WiredTiger*
