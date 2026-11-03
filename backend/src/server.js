@@ -68,14 +68,17 @@ console.log(`[Server] Frontend build directory: ${frontendDist} (exists: ${fs.ex
 
 if (fs.existsSync(frontendDist)) {
   app.use(express.static(frontendDist));
-  app.get('*', (req, res, next) => {
+ app.get('/{*path}', (req, res, next) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
       return next();
     }
     res.sendFile(path.resolve(frontendDist, 'index.html'));
   });
 } else {
-  app.get('/', (req, res) => {
+  app.get('{/*path}', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
+      return next();
+    }
     res.status(200).send('<h1>Community Disaster Management API is Live!</h1><p>Frontend build was not found. Health check: <a href="/api/health">/api/health</a></p>');
   });
 }
